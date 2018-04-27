@@ -15,14 +15,17 @@ class Queue:
         return self.items.pop(0)
 
 q = Queue()
-print q.isEmpty
+q.enqueue(6)
+q.enqueue(5)
+q.enqueue(9)
+q.dequeue()
+
+print q.isEmpty()
 print q.items
-print q.size
-print q.enqueue(5)
-print q.enqueue(6)
-print q.enqueue(9)
-print q.dequeue()
-print q.size
-print q.items
+print q.size()
+
+
+
+
 
 
