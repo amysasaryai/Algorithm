@@ -1,40 +1,44 @@
 #Implement the mergeSort function without using the slice operator.
 
-def mergeSort(alist, start, end):
-	print("Splitting ",alist)
-	newlist = list()
-	if end > start:
-		mid = (start + end)//2
-		mergeSort(alist, start, mid)
-		mergeSort(alist, mid+1, end)
+def mergeSort(alist, start, end, scratch):
+	print("Splitting ",start, end)
+	if(end - start <= 1):
+		return
 
-		i=start
-		j=mid+1
+	mid = (start + end) / 2
+	mergeSort(alist, start, mid, scratch)
+	mergeSort(alist, mid, end, scratch)
 
-		while i < mid+1 and j < end+1:
-			if alist[i] < alist[j]:
-				newlist.append(alist[i])
-				i=i+1
-			else:
-				newlist.append(alist[j])
-				j=j+1
-
-		while i < mid+1:
-			newlist.append(alist[i])
+	i=start
+	j=mid
+	k=start
+	while i < mid and j < end:
+		if alist[i] < alist[j]:
+			scratch[k]=alist[i]
 			i=i+1
-
-		while j < end+1:
-			newlist.append(alist[j])
+		else:
+			scratch[k]=alist[j]
 			j=j+1
-	p=0
-	for o in range(start, end):
-		alist[o] = newlist[p]
-		p=p+1
+		k=k+1
 
-	print("Merging ",alist)
+	while i < mid:
+		scratch[k]=alist[i]
+		i=i+1
+		k=k+1
+
+	while j < end:
+		scratch[j]=alist[j]
+		j=j+1
+		k=k+1
+
+	for o in range(start, end):
+		alist[o] = scratch[o]
+
+	print("Merging ",scratch)
 
 alist = [54,26,93,17,77,31,44,55,20]
-mergeSort(alist, 0, len(alist)-1)
+scratch = [0] * len(alist)
+mergeSort(alist, 0, len(alist), scratch)
 print(alist)
 
 
