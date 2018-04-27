@@ -2,6 +2,7 @@
 
 def mergeSort(alist, start, end):
 	print("Splitting ",alist)
+	newlist = list()
 	if end > start:
 		mid = (start + end)//2
 		mergeSort(alist, start, mid)
@@ -11,23 +12,24 @@ def mergeSort(alist, start, end):
 		j=mid+1
 		k=0
 		while i < mid+1 and j < end+1:
-			if alist[i] < alist[j]:
-				alist[k]=alist[i]
+			if newlist[i] < newlist[j]:
+				newlist[k]=newlist[i]
 				i=i+1
 			else:
-				alist[k]=alist[j]
+				newlist[k]=newlist[j]
 				j=j+1
 			k=k+1
 
 		while i < mid+1:
-			alist[k]=alist[i]
+			newlist[k]=newlist[i]
 			i=i+1
 			k=k+1
 
 		while j < end+1:
-			alist[k]=alist[j]
+			newlist[k]=newlist[j]
 			j=j+1
 			k=k+1
+
 	print("Merging ",alist)
 
 alist = [54,26,93,17,77,31,44,55,20]
