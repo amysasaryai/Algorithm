@@ -10,28 +10,26 @@ def mergeSort(alist, start, end):
 
 		i=start
 		j=mid+1
-		k=start
+
 		while i < mid+1 and j < end+1:
 			if alist[i] < alist[j]:
-				newlist[k]=alist[i]
+				newlist.append(alist[i])
 				i=i+1
 			else:
-				newlist[k]=alist[j]
+				newlist.append(alist[j])
 				j=j+1
-			k=k+1
 
 		while i < mid+1:
-			newlist[k]=alist[i]
+			newlist.append(alist[i])
 			i=i+1
-			k=k+1
 
 		while j < end+1:
-			newlist[k]=alist[j]
+			newlist.append(alist[j])
 			j=j+1
-			k=k+1
-
-	for o in range(0, len(newlist)-1):
-		alist[o] = newlist[o]
+	p=0
+	for o in range(start, end):
+		alist[o] = newlist[p]
+		p=p+1
 
 	print("Merging ",alist)
 
