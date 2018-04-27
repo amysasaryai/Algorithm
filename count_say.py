@@ -1,32 +1,38 @@
-
 def countAndSay(n):
-	
-	if n == 1:
-		astring = "1"
-	elif n == 2:
-		astring = "11"
-	else:
-		i = 1
-		while i < len(countAndSay(n-1)):
-			count = 1
-			flag = False
+	alist = list()
 
-			while i < len(countAndSay(n-1)) and countAndSay(n-1)[i-1] == countAndSay(n-1)[i]:
-					count = count + 1
-					flag = True
-					i = i+1
-			
+	if n == 1:
+		alist = [1]
+	elif n == 2:
+		alist = [1,1]
+	else:
+		i = 0
+		while i < len(countAndSay(n-1))-1:
+			flag = False
+			currentcount = 1
+			while i < (len(countAndSay(n-1))-1) and countAndSay(n-1)[i] == countAndSay(n-1)[i+1]:
+				currentcount = currentcount + 1
+				i = i+1
+				flag = True
+				
 			if flag:
-				astring = astring + str(count) + str(countAndSay(n-1)[i-2])
-				i = i + 1
+				alist.append(currentcount) 
+				alist.append(countAndSay(n-1)[i-1])
+				i=i+1
 
 			if not flag:
-				astring = astring + str(count) + str(countAndSay(n-1)[i-1])
-				i = i + 1
+				alist.append(currentcount) 
+				alist.append(countAndSay(n-1)[i])
+				i=i+1
 
-	return astring
+			if i == len(countAndSay(n-1))-1:
+				if countAndSay(n-1)[i] != countAndSay(n-1)[i-1]:
+					alist.append(1)
+					alist.append(countAndSay(n-1)[i])
 
-print countAndSay(4)
+	return alist
+
+print countAndSay(8)
 
 
 
