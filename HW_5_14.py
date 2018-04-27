@@ -12,21 +12,21 @@ def mergeSort(alist, start, end):
 		j=mid+1
 		k=start
 		while i < mid+1 and j < end+1:
-			if newlist[i] < newlist[j]:
-				newlist[k]=newlist[i]
+			if alist[i] < alist[j]:
+				newlist[k]=alist[i]
 				i=i+1
 			else:
-				newlist[k]=newlist[j]
+				newlist[k]=alist[j]
 				j=j+1
 			k=k+1
 
 		while i < mid+1:
-			newlist[k]=newlist[i]
+			newlist[k]=alist[i]
 			i=i+1
 			k=k+1
 
 		while j < end+1:
-			newlist[k]=newlist[j]
+			newlist[k]=alist[j]
 			j=j+1
 			k=k+1
 
