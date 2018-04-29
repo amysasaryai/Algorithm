@@ -3,8 +3,10 @@ def countAndSay(n):
 
 	if n == 1:
 		astring = astring + "1"
+
 	elif n == 2:
 		astring = astring + "11"
+
 	else:
 		i = 0
 		while i < len(countAndSay(n-1))-1:
@@ -30,9 +32,11 @@ def countAndSay(n):
 					astring = astring + "1"
 					astring = astring + str(countAndSay(n-1)[i])
 
+
 	return astring
 
-print countAndSay(7)
+for i in range(1, 9):
+	print countAndSay(i)
 
 
 
