@@ -38,7 +38,7 @@ def countAndSay(n):
 
 			previous = astring	
 
-	return previous
+	return astring
 
 for o in range(1, 15):
 	print countAndSay(o)
